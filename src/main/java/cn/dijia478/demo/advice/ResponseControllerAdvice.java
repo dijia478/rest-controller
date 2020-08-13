@@ -5,6 +5,7 @@ import cn.dijia478.demo.bean.common.ResultEnum;
 import cn.dijia478.demo.bean.exception.UserException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @date 2020-8-6 10:32:13
  */
 @RestControllerAdvice(basePackages = {"cn.dijia478.demo.controller"})
+@Slf4j
 public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     /**
@@ -49,16 +51,18 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         // String类型不能直接返回，所以要进行些特别的处理
+        BaseResponse<Object> baseResponse = new BaseResponse<>(o);
+        log.info("resp: {}", baseResponse);
         if (methodParameter.getGenericParameterType().equals(String.class)) {
             try {
                 // 将baseResponse转换为json字符串响应给前端
-                return new ObjectMapper().writeValueAsString(new BaseResponse<>(o));
+                return new ObjectMapper().writeValueAsString(baseResponse);
             } catch (JsonProcessingException e) {
                 throw new UserException(ResultEnum.JSON_ERR);
             }
         }
         // 将原本的数据包装在ResultVO里
-        return new BaseResponse<>(o);
+        return baseResponse;
     }
 
 }

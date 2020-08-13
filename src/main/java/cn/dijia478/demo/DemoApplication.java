@@ -6,11 +6,13 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
  * 本demo提供展示以下功能特性
- *
- * 通过 Validated注解 完成参数校验的规范
- * 通过 全局异常处理 + 自定义异常 + 响应码枚举 完成了异常处理的规范
- * 通过 全局响应体处理 完成了响应数据体的规范
- * 通过 swagger3.0 完成了API文档的规范
+ * <p>
+ * 通过 spring boot 2.3.2 完成了rest接口搭建
+ * 通过 Validated注解 + 参数校验异常捕获 完成了参数校验
+ * 通过 全局异常处理 + 自定义异常 + 响应码枚举 完成了异常处理
+ * 通过 全局响应体处理 完成了响应数据体
+ * 通过 swagger3.0 完成了API文档
+ * 通过 lombok 完成了代码简化
  *
  * @author dijia478
  * @date 2020-8-6 11:27:14
@@ -19,8 +21,8 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 @EnableOpenApi
 public class DemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
 }

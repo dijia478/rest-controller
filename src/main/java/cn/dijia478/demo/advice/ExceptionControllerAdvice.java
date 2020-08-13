@@ -15,15 +15,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @date 2020-8-5 18:27:32
  */
 @RestControllerAdvice
+@Slf4j
 public class ExceptionControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseResponse methodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.info("", e);
         return new BaseResponse<>(ResultEnum.VALIDATE_ERR, e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
     }
 
     @ExceptionHandler(UserException.class)
     public BaseResponse userException(UserException e) {
+        log.info("", e);
         return new BaseResponse<>(e.getResultEnum());
     }
 

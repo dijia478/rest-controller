@@ -6,7 +6,6 @@ import cn.dijia478.demo.bean.exception.UserException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2020-8-5 16:02:54
  */
 @RestController
-@Api(tags="用户管理")
+@Api(tags = "用户管理")
 @Slf4j
 public class UserController {
 

@@ -1,8 +1,6 @@
 package cn.dijia478.demo.bean.exception;
 
 import cn.dijia478.demo.bean.common.ResultEnum;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
