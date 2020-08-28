@@ -45,6 +45,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
 		<!-- swagger3.0依赖，进行了starter自动配置整合 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
