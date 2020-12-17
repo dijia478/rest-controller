@@ -12,9 +12,10 @@ import lombok.Getter;
 @Getter
 public class UserException extends RuntimeException {
 
-    private ResultEnum resultEnum;
+    private final ResultEnum resultEnum;
 
     public UserException(ResultEnum resultEnum) {
+        super(resultEnum.getMessage());
         this.resultEnum = resultEnum;
     }
 

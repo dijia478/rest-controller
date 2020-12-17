@@ -14,20 +14,26 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author dijia478
  * @date 2020-8-5 18:27:32
  */
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = {"cn.dijia478.demo.controller"})
 @Slf4j
 public class ExceptionControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public BaseResponse methodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public BaseResponse<String> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.info("", e);
         return new BaseResponse<>(ResultEnum.VALIDATE_ERR, e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
     }
 
     @ExceptionHandler(UserException.class)
-    public BaseResponse userException(UserException e) {
+    public BaseResponse<String> userException(UserException e) {
         log.info("", e);
         return new BaseResponse<>(e.getResultEnum());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public BaseResponse<String> otherException(Exception e) {
+        log.info("", e);
+        return new BaseResponse<>(ResultEnum.UNKNOWN_ERR, e.toString());
     }
 
 }

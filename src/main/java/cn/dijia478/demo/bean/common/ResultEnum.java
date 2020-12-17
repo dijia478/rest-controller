@@ -19,17 +19,19 @@ public enum ResultEnum {
     /** 失败 */
     FAILURE(500, "failure"),
 
+    /** 未知异常 */
+    UNKNOWN_ERR(501, "未知异常"),
+
     /** 参数校验失败 */
-    VALIDATE_ERR(501, "参数校验失败"),
+    VALIDATE_ERR(502, "参数校验失败"),
 
     /** json转换异常 */
-    JSON_ERR(502, "json转换异常"),
+    JSON_ERR(503, "json转换异常"),
 
     /** 数据不存在 */
-    NOT_EXIST(503, "数据不存在");
+    NOT_EXIST(504, "数据不存在");
 
-    private Integer code;
+    private final Integer code;
 
-    private String message;
-
+    private final String message;
 }

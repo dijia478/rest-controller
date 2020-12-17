@@ -25,6 +25,7 @@ public class UserController {
     @PostMapping("/user")
     public void insertUser(@RequestBody @Validated User user) {
         log.info("创建用户:{}", user);
+        throw new NullPointerException();
     }
 
     @ApiOperation("查询用户")
