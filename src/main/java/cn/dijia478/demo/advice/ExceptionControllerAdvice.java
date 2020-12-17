@@ -33,7 +33,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(Exception.class)
     public BaseResponse<String> otherException(Exception e) {
         log.info("", e);
-        return new BaseResponse<>(ResultEnum.UNKNOWN_ERR, e.toString());
+        return new BaseResponse<>(ResultEnum.UNKNOWN_ERR, e.toString() + ":" + e.getMessage());
     }
 
 }
