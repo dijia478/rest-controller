@@ -1,0 +1,7 @@
+server:
+  port: 8478
+
+spring:
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages

@@ -13,6 +13,7 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  * 通过 全局响应体处理 完成了响应数据体
  * 通过 swagger3.0 完成了API文档
  * 通过 lombok 完成了代码简化
+ * 通过 MessageSource 完成了响应消息国际化
  *
  * @author dijia478
  * @date 2020-12-16 17:56:31
