@@ -26,7 +26,7 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseResponse<String> methodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.info("", e);
+        log.error("", e);
         BaseResponse<String> response = new BaseResponse<>(ResultEnum.VALIDATE_ERR, e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         // 进行国际化转换
         I18nUtil.responseToI18n(messageSource, response);
@@ -35,7 +35,7 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(UserException.class)
     public BaseResponse<String> userException(UserException e) {
-        log.info("", e);
+        log.error("", e);
         BaseResponse<String> response = new BaseResponse<>(e.getResultEnum());
         // 进行国际化转换
         I18nUtil.responseToI18n(messageSource, response);
@@ -44,7 +44,7 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     public BaseResponse<String> otherException(Exception e) {
-        log.info("", e);
+        log.error("", e);
         BaseResponse<String> response = new BaseResponse<>(ResultEnum.UNKNOWN_ERR, e.toString() + ":" + e.getMessage());
         // 进行国际化转换
         I18nUtil.responseToI18n(messageSource, response);
