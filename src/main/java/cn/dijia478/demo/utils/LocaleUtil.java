@@ -1,6 +1,5 @@
 package cn.dijia478.demo.utils;
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

@@ -17,8 +17,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import java.util.Locale;
-
 /**
  * 全局响应体统一处理类
  *
@@ -62,7 +60,7 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
         BaseResponse<Object> response = new BaseResponse<>(o);
         log.info("resp: {}", response);
         // 进行国际化转换，根据需要传入第三个参数
-        I18nUtil.msgToI18n(messageSource, response);
+        I18nUtil.responseToI18n(messageSource, response);
 
         if (methodParameter.getGenericParameterType().equals(String.class)) {
             try {

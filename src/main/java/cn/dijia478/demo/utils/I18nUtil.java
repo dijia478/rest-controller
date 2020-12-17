@@ -2,11 +2,6 @@ package cn.dijia478.demo.utils;
 
 import cn.dijia478.demo.bean.common.BaseResponse;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import java.util.Locale;
 
 /**
  * 国际化转换工具
@@ -24,9 +19,8 @@ public class I18nUtil {
      *
      * @param messageSource
      * @param response
-
      */
-    public static <T> void msgToI18n(MessageSource messageSource, BaseResponse<T> response) {
+    public static <T> void responseToI18n(MessageSource messageSource, BaseResponse<T> response) {
         String message = messageSource.getMessage(response.getCode().toString(), null, LocaleUtil.getLocal());
         response.setMessage(message);
     }
