@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     @Autowired
-    private MessageSource messageSource;
+    private I18nUtil i18nUtil;
 
     /**
      * 此方法用来判断，哪些接口的返回值需要被包装，哪些不需要
@@ -60,7 +60,7 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
         BaseResponse<Object> response = new BaseResponse<>(o);
         log.info("resp: {}", response);
         // 进行国际化转换，根据需要传入第三个参数
-        I18nUtil.responseToI18n(messageSource, response);
+        i18nUtil.responseToI18n(response);
 
         if (methodParameter.getGenericParameterType().equals(String.class)) {
             try {

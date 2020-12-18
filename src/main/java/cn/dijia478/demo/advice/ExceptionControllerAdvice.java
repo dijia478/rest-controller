@@ -41,7 +41,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class ExceptionControllerAdvice {
 
     @Autowired
-    private MessageSource messageSource;
+    private I18nUtil i18nUtil;
 
     /**
      * Controller层之前的常见相关异常
@@ -73,7 +73,7 @@ public class ExceptionControllerAdvice {
         log.error("请求尚未到controller层", e);
         BaseResponse<String> response = new BaseResponse<>(ResultEnum.REQUEST_ERR, e.toString());
         // 进行国际化转换
-        I18nUtil.responseToI18n(messageSource, response);
+        i18nUtil.responseToI18n(response);
         return response;
     }
 
@@ -99,7 +99,7 @@ public class ExceptionControllerAdvice {
 
         BaseResponse<String> response = new BaseResponse<>(ResultEnum.VALIDATE_ERR, msg.substring(2));
         // 进行国际化转换
-        I18nUtil.responseToI18n(messageSource, response);
+        i18nUtil.responseToI18n(response);
         return response;
     }
 
@@ -114,7 +114,7 @@ public class ExceptionControllerAdvice {
         log.error("", e);
         BaseResponse<String> response = new BaseResponse<>(e.getResultEnum());
         // 进行国际化转换
-        I18nUtil.responseToI18n(messageSource, response);
+        i18nUtil.responseToI18n(response);
         return response;
     }
 
@@ -129,7 +129,7 @@ public class ExceptionControllerAdvice {
         log.error("", e);
         BaseResponse<String> response = new BaseResponse<>(ResultEnum.UNKNOWN_ERR, e.toString());
         // 进行国际化转换
-        I18nUtil.responseToI18n(messageSource, response);
+        i18nUtil.responseToI18n(response);
         return response;
     }
 
