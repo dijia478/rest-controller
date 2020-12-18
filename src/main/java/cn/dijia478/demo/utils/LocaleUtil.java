@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 /**
- * 获取请求头中的语言信息
+ * 获取语言信息工具类
  *
  * @author dijia478
  * @date 2020-12-17 15:53
@@ -20,6 +20,11 @@ public class LocaleUtil {
 
     private LocaleUtil() {}
 
+    /**
+     * 从请求头中获取语言信息
+     *
+     * @return
+     */
     public static Locale getLocal() {
         ServletRequestAttributes attributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         if (attributes == null) {

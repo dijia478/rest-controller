@@ -2,6 +2,7 @@ package cn.dijia478.demo.utils;
 
 import cn.dijia478.demo.bean.common.BaseResponse;
 import org.springframework.context.MessageSource;
+import org.springframework.util.StringUtils;
 
 /**
  * 国际化转换工具
@@ -22,7 +23,9 @@ public class I18nUtil {
      */
     public static <T> void responseToI18n(MessageSource messageSource, BaseResponse<T> response) {
         String message = messageSource.getMessage(response.getCode().toString(), null, LocaleUtil.getLocal());
-        response.setMessage(message);
+        if (StringUtils.hasLength(message)) {
+            response.setMessage(message);
+        }
     }
 
 }
