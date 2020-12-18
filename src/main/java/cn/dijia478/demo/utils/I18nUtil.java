@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * 国际化转换工具
+ * 本项目示例采用springboot自带的MessageSource进行国际化翻译，可以根据需要自行重写本类方法，比如从数据库中获取
  *
  * @author dijia478
  * @date 2020-12-17 14:48
@@ -22,7 +23,6 @@ public class I18nUtil {
 
     /**
      * 将response中的message进行国际化转换
-     * 本项目示例采用springboot自带的MessageSource进行国际化翻译，可以根据需要自行重写本方法
      *
      * @param response
      */
