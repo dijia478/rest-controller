@@ -19,8 +19,6 @@ public class I18nUtil {
     @Autowired
     private MessageSource messageSource;
 
-    private I18nUtil() {}
-
     /**
      * 将response中的message进行国际化转换
      *
@@ -40,7 +38,8 @@ public class I18nUtil {
      * @return
      */
     public String getI18nMsg(String code) {
-        return messageSource.getMessage(code, null, LocaleUtil.getLocal());
+        String message = messageSource.getMessage(code, null, LocaleUtil.getLocal());
+        return StringUtils.hasText(message) ? message : code;
     }
 
 }

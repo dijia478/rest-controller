@@ -8,7 +8,6 @@ import com.sun.corba.se.impl.io.TypeMismatchException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.validation.BindException;
@@ -78,7 +77,7 @@ public class ExceptionControllerAdvice {
     }
 
     /**
-     * 参数校验绑定异常
+     * 参数校验绑定异常，spring boot版本过低的话，下面不能用BindException，两个异常没有继承关系，高版本才有
      *
      * @param e 异常
      * @return 返回结果
